@@ -10,5 +10,4 @@ public class Main
         Scene scene = new Scene();
         scene.MakeScene();
     }
-
 }
