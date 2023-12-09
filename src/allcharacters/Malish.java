@@ -2,9 +2,10 @@ package allcharacters;
 
 import character.EmotionalState;
 import character.MainCharacter;
+import character.MainCharacterBehaviour;
 import character.PhysicalState;
 
-public class Malish extends MainCharacter
+public class Malish extends MainCharacter implements MainCharacterBehaviour
 {
 
     public Malish(EmotionalState emotionalState, PhysicalState physicalState, String name)
@@ -51,6 +52,17 @@ public class Malish extends MainCharacter
         this.AddEscapeAction("Малыш смело направляется к двери, готовый на все, чтобы выбраться из ловушки");
     }
 
+    public void Think()
+    {
+        this.PerformAction(GenerateAction(dreams) + ", -- подумал " + this.GetName() + ".");
+    }
+
+    public void Escape()
+    {
+        this.PerformAction(GenerateAction(escapeActions) + ".");
+        this.SetPhysicalState(PhysicalState.RUNNING);
+        SetNotiable(true);
+    }
     @Override
     public String toString()
     {
